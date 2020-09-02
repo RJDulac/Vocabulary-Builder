@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import wordList from "./vocabList.json";
+import DisplayWords from "./Components/DisplayWords";
+import PracticeWords from "./Components/PracticeWords";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    vocabList: wordList.list,
+  };
+  render() {
+    const { vocabList } = this.state;
+    return (
+      <div>
+        <DisplayWords vocabList={vocabList} />
+        <PracticeWords vocabList={vocabList} />
+      </div>
+    );
+  }
 }
 
 export default App;

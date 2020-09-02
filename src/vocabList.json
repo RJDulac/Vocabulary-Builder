@@ -1,0 +1,39 @@
+{
+  "list": [
+    {
+      "word": "voluptuous",
+      "definition": "sensuously pleasing or delightful",
+      "wordClass": "Adjective"
+    },
+    {
+      "word": "insidious",
+      "definition": "stealthily treacherous or deceitful",
+      "wordClass": "Adjective"
+    },
+    {
+      "word": "eviscerate",
+      "definition": "to remove the entrails from",
+      "wordClass": "Verb"
+    },
+    {
+      "word": "pernicious",
+      "definition": "causing insidious harm or ruin",
+      "wordClass": "Adjective"
+    },
+    {
+      "word": "lavish",
+      "definition": "using or giving in great amounts",
+      "wordClass": "Adjective"
+    },
+    {
+      "word": "scofflaw",
+      "definition": "a person who flouts rules, conventions, or accepted practices",
+      "wordClass": "Noun"
+    },
+    {
+      "word": "juberous",
+      "definition": "uncertain and reluctant; dubious; undecided",
+      "wordClass": "Noun"
+    }
+  ]
+}
