@@ -36,7 +36,7 @@ class PracticeWords extends Component {
     return (
       <div style={{ textAlign: "center" }}>
         <button onClick={this.handleShowAnswer}>
-          {!showAnswer ? <span>Show Answer</span> : <span>Hide Answer</span>}
+          {!showAnswer ? "Show Answer" : "Hide Answer"}
         </button>
         <button onClick={this.handleRandomVocab}>Next Random Word</button>
         <p>What is the definition of {word}?</p>
