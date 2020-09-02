@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import DisplaySelectedWords from "./DisplaySelectedWords";
 
 class Search extends Component {
   static propTypes = {
@@ -8,8 +9,7 @@ class Search extends Component {
 
   state = {
     text: "",
-    selectedWord: "",
-    showAnswer: false,
+    selectedWord: [], //change to selectedWords - changed behavior
   };
 
   onChange = (e) => {
@@ -18,21 +18,28 @@ class Search extends Component {
 
   onSubmit = (e) => {
     const { vocabList } = this.props;
-    this.setState({ selectedWord: "" });
     e.preventDefault();
-    for (let i = 0; i < vocabList.length; i++) {
-      if (vocabList[i].word === this.state.text.toLowerCase()) {
-        this.setState({ selectedWord: vocabList[i] });
+
+    if (this.state.text !== "") {
+      for (let i = 0; i < vocabList.length; i++) {
+        if (vocabList[i].word.includes(this.state.text.toLowerCase())) {
+          this.setState({
+            selectedWord: [...this.state.selectedWord, vocabList[i]],
+          });
+        }
       }
     }
+
     this.setState({ text: "" });
   };
 
-  handleShowAnswer = () =>
-    this.setState({ showAnswer: !this.state.showAnswer });
+  handleClearList = () => {
+    console.log(this.state.selectedWord);
+    this.setState({ selectedWord: [] });
+  };
 
   render() {
-    const { selectedWord, text, showAnswer } = this.state;
+    const { selectedWord, text } = this.state;
     return (
       <div style={{ textAlign: "center" }}>
         <form onSubmit={this.onSubmit}>
@@ -44,14 +51,11 @@ class Search extends Component {
             value={text}
           />
           <input type="submit" value="Search" />
+          <button onClick={this.handleClearList}>Clear List</button>
         </form>
-        <p>{selectedWord.word}</p>
-        {selectedWord !== "" && (
-          <button onClick={this.handleShowAnswer}>
-            {!showAnswer ? "Show Answer" : "Hide Answer"}
-          </button>
-        )}
-        {showAnswer && <p>{selectedWord.definition}</p>}
+        {selectedWord.map((list) => (
+          <DisplaySelectedWords list={list} selectedWord={selectedWord} />
+        ))}
       </div>
     );
   }
