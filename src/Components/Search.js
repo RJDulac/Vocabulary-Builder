@@ -22,14 +22,16 @@ class Search extends Component {
 
     if (this.state.text !== "") {
       for (let i = 0; i < vocabList.length; i++) {
-        if (vocabList[i].word.includes(this.state.text.toLowerCase())) {
+        if (
+          vocabList[i].word.includes(this.state.text.toLowerCase()) &&
+          !JSON.stringify(this.state.selectedWord).includes(vocabList[i].word)
+        ) {
           this.setState({
             selectedWord: [...this.state.selectedWord, vocabList[i]],
           });
         }
       }
     }
-
     this.setState({ text: "" });
   };
 
