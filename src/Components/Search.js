@@ -19,11 +19,14 @@ class Search extends Component {
   onSubmit = (e) => {
     const { vocabList } = this.props;
     e.preventDefault();
+
     const selectedWordStringified = JSON.stringify(this.state.selectedWord);
+    const textLowerCase = this.state.text.toLowerCase();
+
     if (this.state.text !== "") {
       for (let i = 0; i < vocabList.length; i++) {
         if (
-          vocabList[i].word.includes(this.state.text.toLowerCase()) &&
+          vocabList[i].word.includes(textLowerCase) &&
           !selectedWordStringified.includes(vocabList[i].word)
         ) {
           this.setState({
