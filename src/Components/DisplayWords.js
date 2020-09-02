@@ -23,7 +23,9 @@ const DisplayWords = ({ vocabList }) => {
 DisplayWords.propTypes = {
   vocabList: PropTypes.array.isRequired,
 };
+
 DisplayWords.defaultProps = {
   vocabList: [{ word: "default", definition: "none" }],
 };
+
 export default DisplayWords;
