@@ -13,7 +13,7 @@ class DisplaySelectedWords extends Component {
     return (
       <Fragment>
         <p>{list.word}</p>
-        {selectedWord !== "" && (
+        {selectedWord.length > 0 && ( //not really needed - but leave just in case of a refactor
           <button onClick={this.handleShowAnswer}>
             {!showAnswer ? "Show Answer" : "Hide Answer"}
           </button>

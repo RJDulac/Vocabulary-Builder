@@ -20,10 +20,10 @@ class Search extends Component {
     const { vocabList } = this.props;
     e.preventDefault();
 
-    const selectedWordStringified = JSON.stringify(this.state.selectedWord);
-    const textLowerCase = this.state.text.toLowerCase();
-
     if (this.state.text !== "") {
+      const selectedWordStringified = JSON.stringify(this.state.selectedWord);
+      const textLowerCase = this.state.text.toLowerCase();
+
       for (let i = 0; i < vocabList.length; i++) {
         if (
           vocabList[i].word.includes(textLowerCase) &&
@@ -56,7 +56,9 @@ class Search extends Component {
             value={text}
           />
           <input type="submit" value="Search" />
-          <button onClick={this.handleClearList}>Clear List</button>
+          {selectedWord.length > 0 && (
+            <button onClick={this.handleClearList}>Clear List</button>
+          )}
         </form>
         {selectedWord.map((list) => (
           <DisplaySelectedWords list={list} selectedWord={selectedWord} />
