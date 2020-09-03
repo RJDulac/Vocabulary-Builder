@@ -5,6 +5,7 @@ import DisplaySelectedWords from "./DisplaySelectedWords";
 class Search extends Component {
   static propTypes = {
     vocabList: PropTypes.array.isRequired,
+    setAlert: PropTypes.func.isRequired,
   };
 
   state = {
@@ -17,10 +18,12 @@ class Search extends Component {
   };
 
   onSubmit = (e) => {
-    const { vocabList } = this.props;
+    const { vocabList, setAlert } = this.props;
     e.preventDefault();
 
-    if (this.state.text !== "") {
+    if (this.state.text === "") {
+      setAlert("Please enter something", "light");
+    } else {
       const selectedWordStringified = JSON.stringify(this.state.selectedWord);
       const textLowerCase = this.state.text.toLowerCase();
 
@@ -34,8 +37,8 @@ class Search extends Component {
           });
         }
       }
+      this.setState({ text: "" });
     }
-    this.setState({ text: "" });
   };
 
   handleClearList = () => {
